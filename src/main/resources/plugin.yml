@@ -1,0 +1,42 @@
+name: TearsSMPMythicItem
+version: 1.0.1
+main: com.tearssmp.mythic.TearsMythicPlugin
+api-version: '1.21.11'
+description: Unified Tears SMP Mythic Items plugin (Arachnaid Axe, Dragon Egg, and Cleric's Bag) with global wielder broadcasts, container lock, and bundled 1.21.11 Resource Pack.
+
+commands:
+  tearssmp:
+    description: Commands for Tears SMP Mythic Items
+    aliases: [tsmp, mythic, arachnaid, dragonegg, clericsbag]
+    usage: /tearssmp <give|open|charge|reset|unlock|status|pack|reload> [args]
+    permission: tearssmp.admin
+
+permissions:
+  tearssmp.admin:
+    description: Grants access to Tears SMP Mythic Item admin commands
+    default: op
+    children:
+      tearssmp.admin.give: true
+      tearssmp.admin.charge: true
+      tearssmp.admin.reset: true
+      tearssmp.admin.unlock: true
+      tearssmp.admin.status: true
+      tearssmp.admin.pack: true
+      tearssmp.admin.reload: true
+  tearssmp.admin.give:
+    default: op
+  tearssmp.admin.charge:
+    default: op
+  tearssmp.admin.reset:
+    default: op
+  tearssmp.admin.unlock:
+    default: op
+  tearssmp.admin.status:
+    default: op
+  tearssmp.admin.pack:
+    default: op
+  tearssmp.admin.reload:
+    default: op
+  tearssmp.use:
+    description: Allows using Tears SMP Mythic Items
+    default: true

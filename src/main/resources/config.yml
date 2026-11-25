@@ -1,0 +1,164 @@
+# ==============================================================================
+# Tears SMP Mythic Item Configuration (Paper 1.21.11)
+# ==============================================================================
+
+global:
+  # Mythic items stay strictly in player inventories — cannot be stored in chests,
+  # shulker boxes, barrels, bundles, ender chests, hoppers, or item frames
+  inventory-only-storage: true
+  # Mythic items cannot be renamed in anvils
+  prevent-rename: true
+  # Broadcast in chat whenever any player becomes the wielder of a mythic item
+  broadcast-wielder-changes: true
+
+resource-pack:
+  enabled: true
+  use-built-in-host: true
+  public-host: ""
+  port: 25580
+  # For shared/free hosts blocking port 25580: upload plugins/TearsSMPMythicItem/TearsSMP-ResourcePack.zip
+  # to https://mc-packs.net and paste the direct URL here
+  custom-url: ""
+  required: false
+  prompt: "<dark_red><bold>Tears SMP</bold></dark_red> <gray>Mythic Weapon Texture Pack</gray>"
+
+# ------------------------------------------------------------------------------
+# 1. ARACHNAID AXE
+# ------------------------------------------------------------------------------
+arachnaid-axe:
+  name: "<gradient:#990018:#FF2A4D><bold>ARACHNAID AXE</bold></gradient>"
+  custom-model-data: "arachnaid_axe"
+  # Sharpness 6 applied internally on weapon without showing enchantment tooltip lines
+  sharpness-level: 6
+  hide-enchantment-tooltip: true
+  allow-netherite-repair: true
+  combat-particles: true
+  one-craft-limit: true
+  broadcast-on-craft: true
+  broadcast-on-unlock: true
+  broadcast-wielder: true
+  lore:
+    - "<dark_red>Mythic Artifact</dark_red> <dark_gray>|</dark_gray> <gray>Forged of Venom & Crimson</gray>"
+    - ""
+    - "<red><bold>Abilities:</bold></red>"
+    - "<gray>▸ Crouch + Look Down + Right-Click:</gray> <white>Spider Web Trap</white>"
+    - "<gray>▸ Double Right-Click Wall:</gray> <white>Scaffolding Wall Crawl</white>"
+    - "<dark_gray>  W/S Up-Down | A/D Left-Right | Release = Instant Stop</dark_gray>"
+    - "<dark_gray>  Space/Shift Detach</dark_gray>"
+    - ""
+    - "<dark_gray>Unique 1-Craft | Indestructible Drop | Inventory Only</dark_gray>"
+  crafting:
+    enabled: true
+    # Slot 1-3: GEG | Slot 4-6: FAF | Slot 7-9: GEG (G=Enchanted Golden Apple, E=Emerald Ore, F=Fermented Spider Eye, A=Diamond Axe)
+    shape:
+      - "GEG"
+      - "FAF"
+      - "GEG"
+    ingredients:
+      G: ENCHANTED_GOLDEN_APPLE
+      E: EMERALD_ORE
+      F: FERMENTED_SPIDER_EYE
+      A: DIAMOND_AXE
+  spider-web:
+    cooldown-seconds: 60
+    range-half-width: 4.0
+    range-vertical: 4.0
+    min-look-down-pitch: 45.0
+    max-ground-search-depth: 5
+    consume-cooldown-on-miss: false
+    target-creative: false
+    target-mobs: false
+  wall-climb:
+    double-click-window-ms: 420
+    max-wall-aim-distance: 3.2
+    wall-attach-distance: 0.95
+    climb-up-speed: 0.25
+    climb-down-speed: 0.24
+    strafe-speed: 0.22
+    wall-hug-force: 0.08
+    jump-off-push: 0.36
+    jump-off-upward: 0.38
+    cancel-grace-ms: 180
+  special-webs:
+    drop-items-on-break: false
+    creative-admin-can-break: true
+
+# ------------------------------------------------------------------------------
+# 2. DRAGON EGG (Normal vanilla name & normal glint — obtained from End Portal)
+# ------------------------------------------------------------------------------
+dragon-egg:
+  # Keep name and glint completely normal (vanilla Dragon Egg appearance)
+  keep-normal-name: true
+  keep-normal-glint: true
+  prevent-place: true
+  indestructible-drop: true
+  broadcast-wielder: true
+  show-bossbar-while-held: true
+  charge-only-when-held: false
+  dragons-throw:
+    charge-interval-seconds: 2
+    charge-per-interval: 1
+    max-charge: 100
+    min-charge-to-fire: 1
+    max-launch-height-blocks: 200.0
+    target-range-blocks: 24.0
+    double-click-window-ms: 450
+    target-creative: false
+    target-mobs: false
+  dragons-breath:
+    area-half-width: 4.0
+    duration-seconds: 10
+    cooldown-seconds: 60
+    damage-interval-ticks: 10
+    damage-per-pulse: 3.0
+    min-look-down-pitch: 45.0
+    double-click-window-ms: 450
+    target-creative: false
+    target-mobs: false
+
+# ------------------------------------------------------------------------------
+# 3. CLERIC'S BAG (16 ordered potions, throw on right-click, edit order in GUI)
+# ------------------------------------------------------------------------------
+clerics-bag:
+  name: "<gold><bold>Cleric's Bag</bold></gold>"
+  max-potions: 16
+  enchantment-glint: true
+  throw-speed: 1.25
+  throw-cooldown-ms: 150
+  show-particles: true
+  lore-preview-count: 5
+  broadcast-wielder: true
+  crafting:
+    enabled: true
+    require-empty-bundle: true
+
+messages:
+  prefix: "<dark_red>[Tears SMP]</dark_red> "
+  no-permission: "<red>You don't have permission to do that.</red>"
+  container-blocked: "<red>Mythic items must stay in your player inventory! <gray>(No chests, shulkers, barrels, bundles, or ender chests)</gray></red>"
+  rename-blocked: "<red>Mythic items cannot be renamed!</red>"
+  wielder-changed-broadcast: "<gold>Now <white>{mythic}</white> <gold>is wielded by <white>{player}</white>!</gold>"
+  web-on-cooldown: "<red>Spider Web is on cooldown: <white>{time}s</white> remaining.</red>"
+  web-no-targets: "<gray>No eligible targets on solid ground in 8x8 range.</gray>"
+  web-activated: "<green>Spider Web triggered on <white>{count}</white> target(s)!</green>"
+  web-protected: "<red>Special webs can only be broken with Shears or Water!</red>"
+  climb-start: "<green>Wall Crawl ON</green> <dark_gray>|</dark_gray> <white>W/S</white> <gray>Up/Down</gray> <dark_gray>|</dark_gray> <white>A/D</white> <gray>Left/Right</gray> <dark_gray>|</dark_gray> <yellow>Space/Shift</yellow> <gray>Detach</gray>"
+  climb-stop: "<gray>Wall Crawl ended.</gray>"
+  climb-cancelled: "<yellow>Detached from wall.</yellow>"
+  enchant-blocked: "<red>The ARACHNAID AXE enchantments are locked.</red>"
+  craft-locked: "<red>The ARACHNAID AXE has already been crafted! Nobody else can craft it.</red>"
+  craft-unlocked-broadcast: "<yellow>The <dark_red><bold>ARACHNAID AXE</bold></dark_red> <yellow>was lost ({reason})! Its crafting recipe is unlocked again.</yellow>"
+  craft-claimed-broadcast: "<green><white>{player}</white> has forged the <dark_red><bold>ARACHNAID AXE</bold></dark_red><green>! Nobody else can craft it now.</green>"
+  throw-no-charge: "<red>Dragon's Throw needs at least <white>{min}%</white> charge!</red>"
+  throw-launched-caster: "<light_purple>Dragon's Throw!</light_purple> <gray>Launched <white>{target}</white> <white>{height} blocks</white> up (<white>{charge}%</white> charge)!</gray>"
+  throw-launched-victim: "<dark_purple><bold>🐉 DRAGON'S THROW!</bold></dark_purple> <red>{caster} launched you <white>{height} blocks</white> into the sky!</red>"
+  breath-on-cooldown: "<red>Dragon's Breath is on cooldown: <white>{time}s</white> remaining.</red>"
+  breath-activated: "<dark_purple>Dragon's Breath unleashed!</dark_purple> <gray>8x8 area active for <white>{duration}s</white> (You are immune).</gray>"
+  place-blocked: "<gray>The Dragon Egg cannot be placed down.</gray>"
+  empty-bag: "<gray>Cleric's Bag is empty! Shift + Right-Click to open the potion menu.</gray>"
+  bag-full: "<red>Cleric's Bag is full (<white>{max}/{max}</white>).</red>"
+  menu-only: "<red>Store potions inside the Cleric's Bag menu only! <gray>(Shift + Right-Click or Right-Click in inventory)</gray></red>"
+  potions-only: "<red>Only potions can be placed inside Cleric's Bag!</red>"
+  threw-potion: "<green>Threw <white>{potion}</white> <dark_gray>|</dark_gray> <gray>Next:</gray> <yellow>{next}</yellow> <dark_gray>(<white>{remaining}/{max}</white>)</dark_gray></green>"
+  threw-last-potion: "<green>Threw <white>{potion}</white> <dark_gray>|</dark_gray> <gray>Bag is now empty.</gray></green>"
+  reloaded: "<green>TearsSMPMythicItem configuration reloaded.</green>"
